@@ -12,4 +12,4 @@ jobs:
         with:
           fetch-depth: 0
       - run: git log
-      - run: sleep 5
+      - run: sleep 1200
