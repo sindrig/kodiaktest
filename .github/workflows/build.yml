@@ -7,8 +7,11 @@ on:
 jobs:
   before:
     runs-on: ubuntu-20.04
+    outputs:
+      ALLOK: ${{ steps.git_refs.outputs.ALLOK }}
     steps:
-      - run: exit 1
+      # - run: exit 1
+      - run: echo "::set-output name=ALLOK::yes"
 
   run:
     runs-on: ubuntu-20.04
@@ -19,7 +22,5 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - run: echo ${{ needs.before.outputs.ALLOK}}
       - run: git log
-      - run: echo ${{ success() }}
-      - run: echo ${{ cancelled() }}
-      - run: echo ${{ failure() }}
