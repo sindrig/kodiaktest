@@ -5,8 +5,15 @@ on:
   - push
 
 jobs:
+  beforebefore:
+    runs-on: ubuntu-20.04
+    steps:
+      - run: exit 1
+
   before:
     runs-on: ubuntu-20.04
+    needs:
+      - beforebefore
     outputs:
       ALLOK: ${{ steps.outputter.outputs.ALLOK }}
     steps:
