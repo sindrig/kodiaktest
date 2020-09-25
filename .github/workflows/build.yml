@@ -8,10 +8,11 @@ jobs:
   run:
     runs-on: ubuntu-20.04
 
-    if: false
+    # if: false
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - run: git log
+      - run: exit 1
       - run: sleep 30
