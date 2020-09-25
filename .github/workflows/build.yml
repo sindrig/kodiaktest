@@ -24,4 +24,4 @@ jobs:
     env:
       ALLOK: ${{ needs.before.outputs.ALLOK }}
     steps:
-      - run: echo $ALLOK
+      - run: [[ $ALLOK == "yes" ]] || exit 1
