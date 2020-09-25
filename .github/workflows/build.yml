@@ -14,8 +14,12 @@ jobs:
     runs-on: ubuntu-20.04
     needs:
       - before
+    if: ${{always()}}
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - run: git log
+      - run: echo ${{ success() }}
+      - run: echo ${{ cancelled() }}
+      - run: echo ${{ failure() }}
