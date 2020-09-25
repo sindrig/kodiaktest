@@ -10,7 +10,7 @@ jobs:
     outputs:
       ALLOK: ${{ steps.outputter.outputs.ALLOK }}
     steps:
-      # - run: exit 1
+      - run: exit 1
       - id: outputter
         run: echo "::set-output name=ALLOK::yes"
         # echo "::set-env name=ALLOK::yes"
