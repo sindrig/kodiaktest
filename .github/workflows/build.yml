@@ -2,14 +2,16 @@ name: Kodiak pipeline
 
 on:
   - pull_request
+  - push
 
 jobs:
   run:
     runs-on: ubuntu-20.04
 
+    if: false
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - run: git log
-      - run: sleep 1200
+      - run: sleep 30
