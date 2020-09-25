@@ -11,18 +11,17 @@ jobs:
       ALLOK: ${{ steps.git_refs.outputs.ALLOK }}
     steps:
       # - run: exit 1
-      - run: echo "::set-output name=ALLOK::yes"
+      - run: |
+        echo "::set-output name=ALLOK::yes"
+        echo "::set-env name=ALLOK::yes"
+        echo $ALLOK
 
   run:
     runs-on: ubuntu-20.04
     needs:
       - before
-    if: ${{always()}}
+    # if: ${{always()}}
     env:
-      ALLOK: ${{ needs.before.outputs.ALLOK}}
+      ALLOK: ${{ needs.before.outputs.ALLOK }}
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - run: echo $ALLOK
-      - run: git log
