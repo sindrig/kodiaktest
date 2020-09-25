@@ -19,7 +19,7 @@ jobs:
       - before
     if: ${{always()}}
     env:
-      ALLOK: ${{ needs.prepare.outputs.ALLOK}}
+      ALLOK: ${{ needs.before.outputs.ALLOK}}
     steps:
       - uses: actions/checkout@v2
         with:
