@@ -5,13 +5,31 @@ on:
   - push
 
 jobs:
+  beforebefore:
+    runs-on: ubuntu-20.04
+    steps:
+      - run: exit 0
+
+  before:
+    runs-on: ubuntu-20.04
+    needs:
+      - beforebefore 
+    outputs:
+      ALLOK: ${{ steps.outputter.outputs.ALLOK }}
+    steps:
+      - run: env
+      - run: exit 0
+      - id: outputter
+        run: echo "::set-output name=ALLOK::yes"
+        # echo "::set-env name=ALLOK::yes"
+        # echo $ALLOK
+
   run:
     runs-on: ubuntu-20.04
-
-    if: false
+    needs:
+      - before
+    if: always()
+    env:
+      ALLOK: ${{ needs.before.outputs.ALLOK }}
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - run: git log
-      - run: sleep 30
+      - run: '[[ $ALLOK == "yes" ]] || exit 1'
