@@ -13,10 +13,11 @@ jobs:
   before:
     runs-on: ubuntu-20.04
     needs:
-      - beforebefore
+      - beforebefore 
     outputs:
       ALLOK: ${{ steps.outputter.outputs.ALLOK }}
     steps:
+      - run: env
       - run: exit 0
       - id: outputter
         run: echo "::set-output name=ALLOK::yes"
