@@ -22,5 +22,5 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
-        echo 'something': ${{ matrix.something }}
-        echo 'other': ${{ matrix.other }}
+          echo 'something: ${{ matrix.something }}'
+          echo 'other: ${{ matrix.other }}'
