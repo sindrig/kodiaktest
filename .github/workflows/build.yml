@@ -9,11 +9,15 @@ jobs:
     strategy:
       matrix:
         something:
-          - some1
-          - some2
-        other:
-          - oth1
-          - oth2
+          info:
+            - some1
+            - some2
+          more:
+            - more1
+            - more2
+        # other:
+        #   - oth1
+        #   - oth2
 
     runs-on: ubuntu-20.04
 
