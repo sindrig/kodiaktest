@@ -8,13 +8,17 @@ jobs:
   run:
     strategy:
       matrix:
-        something:
-          info:
-            - some1
-            - some2
-          more:
-            - more1
-            - more2
+        docker-type:
+        projects:
+        include:
+          - docker-type: test
+            projects: a,b
+          - docker-type: test
+            projects: c,d
+          - docker-type: test2
+            projects: 1,2
+          - docker-type: test3
+            projects: I
         # other:
         #   - oth1
         #   - oth2
