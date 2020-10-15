@@ -8,8 +8,8 @@ jobs:
   run:
     strategy:
       matrix:
-        docker-type:
-        projects:
+        docker-type: []
+        projects: []
         include:
           - docker-type: test
             projects: a,b
